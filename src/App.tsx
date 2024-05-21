@@ -10,7 +10,7 @@ export function App() {
   return (
     <HelmetProvider>
       <ThemeProvider storageKey="pizzashop-theme" defaultTheme="dark">
-        <Helmet titleTemplate="%s | Unifood" />
+        <Helmet titleTemplate="%s | unifood" />
         <RouterProvider router={router} />
       </ThemeProvider>
     </HelmetProvider>

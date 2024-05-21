@@ -1,41 +1,37 @@
 import { Helmet } from 'react-helmet-async'
 
-import { Card, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export function Register() {
   return (
     <>
       <Helmet title="Cadastros" />
       <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Cadastros</h1>
-
-        <div className="grid grid-cols-4 gap-4">
-          <Card>
-            <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-base font-semibold">
-                Categorias
-              </CardTitle>
-            </CardHeader>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-base font-semibold">
-                Produtos
-              </CardTitle>
-            </CardHeader>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-base font-semibold">
-                Fornecedores
-              </CardTitle>
-            </CardHeader>
-          </Card>
+        <h1 className="text-3xl font-bold tracking-tight">Pedidos</h1>
+        <div className="space-y-2.5">
+          <form className="flex items-center gap-2">
+            <span className="text-sm font-semibold">Filtros: </span>
+            <Input placeholder="ID do pedido" className="h-8 w-auto" />
+            <Input placeholder="Nome do cliente" className="h-8 w-[320px]" />
+            <Select defaultValue="all">
+              <SelectTrigger className="h-8 w-[180px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Todos</SelectItem>
+                <SelectItem value="peding">Pendente</SelectItem>
+                <SelectItem value="camceled">Cancelado</SelectItem>
+              </SelectContent>
+            </Select>
+          </form>
         </div>
-
-        <div className="grid grid-cols-9 gap-4">TESTE</div>
       </div>
     </>
   )
