@@ -2,25 +2,10 @@
 import {
   Activity,
   ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
-  Copy,
   CreditCard,
   DollarSign,
-  File,
-  Home,
-  LineChart,
-  ListFilter,
-  MoreVertical,
-  Package,
-  Package2,
-  PanelLeft,
   Search,
-  Settings,
-  ShoppingCart,
-  Truck,
   Users,
-  Users2,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
