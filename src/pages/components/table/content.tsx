@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { TableOptions, flexRender, getCoreRowModel, getExpandedRowModel, useReactTable } from "@tanstack/react-table";
-import { useContext, createContext } from "react";
+import { useContext, createContext, Fragment } from "react";
 
 interface Props<T> extends Omit<TableOptions<T>, 'getCoreRowModel'> {
   emptyMessageComponent?: () => React.JSX.Element;
@@ -45,14 +45,14 @@ export function Content<T>({
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
               return (
-                <TableHead key={header.id}>
+                <Fragment key={header.id}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(
                       header.column.columnDef.header,
                       header.getContext(),
                     )}
-                </TableHead>
+                </Fragment>
               )
             })}
           </TableRow>
@@ -63,15 +63,16 @@ export function Content<T>({
           table.getRowModel().rows.map((row) => (
             <TableRow
               key={row.id}
+              className="group"
               data-state={row.getIsSelected() && 'selected'}
             >
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
+                <Fragment key={cell.id} >
                   {flexRender(
                     cell.column.columnDef.cell,
                     cell.getContext(),
                   )}
-                </TableCell>
+                </Fragment>
               ))}
             </TableRow>
           ))

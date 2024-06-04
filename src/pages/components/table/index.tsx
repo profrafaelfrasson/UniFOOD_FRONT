@@ -1,3 +1,4 @@
+import { Actions } from './actions'
 import { Cell } from './cell'
 import { Content } from './content'
 import { EmptyMessage } from './empty-message'
@@ -9,5 +10,6 @@ export const Table = {
   Content,
   EmptyMessage,
   Cell,
-  Head
+  Head,
+  Actions,
 }

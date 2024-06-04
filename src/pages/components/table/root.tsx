@@ -6,10 +6,7 @@ interface Props extends ComponentProps<'div'> { }
 export function Root({ className, ...rest }: Props) {
   return (
     <div
-      className={twMerge(
-        ['rounded-md', 'border'],
-        className,
-      )}
+      className={twMerge(className)}
       {...rest}
     />
   )

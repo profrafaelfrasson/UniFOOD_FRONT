@@ -7,7 +7,7 @@ import { NavLink } from './nav-link'
 
 export function Aside() {
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+    <aside className="fixed inset-y-0 left-0 z-50 hidden w-14 flex-col border-r bg-background sm:flex">
       <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
         <Link
           to="#"
@@ -50,8 +50,8 @@ export function Aside() {
             <TooltipContent side="right">Settings</TooltipContent>
           </Tooltip>
         </TooltipProvider>
-
       </nav>
     </aside >
+
   )
 }
