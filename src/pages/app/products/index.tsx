@@ -1,7 +1,6 @@
 import {
   MoreHorizontal,
   PlusCircle,
-  Search,
 } from "lucide-react"
 
 import {
@@ -28,14 +27,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 
 
 import { Link } from "react-router-dom"
 import { ColumnDef } from "@tanstack/react-table"
 import { Table } from "@/pages/components/table"
-import { AccountMenu } from "@/pages/components/account-menu"
-import { ThemeToggle } from "@/components/theme/theme-toggle"
 
 interface Product {
   id: string
