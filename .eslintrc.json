@@ -1,9 +1,18 @@
 {
     "extends": [
-        "@rocketseat/eslint-config/react"
+        "@rocketseat/eslint-config/react",
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
     ],
-    "plugins": ["simple-import-sort"],
+    "plugins": ["simple-import-sort", "@tanstack/query", "@typescript-eslint"],
+    "globals": {
+        "React": "readonly"
+      },
     "rules": {
         "simple-import-sort/imports": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-unused-vars": "off"
     }
 }
