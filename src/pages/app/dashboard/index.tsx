@@ -31,11 +31,12 @@ import {
 } from "@/components/ui/table";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Page } from "@/pages/components/page";
 
 export function Dashboard() {
   return (
-    <main className="flex min-h-[calc(100vh-64px)] w-full flex-col bg-muted/40">
-      <header className="flex flex-col sm:gap-4 sm:pb-4 sm:pl-14">
+    <Page.Root>
+      <Page.Header>
         <nav className="px-6">
           <Breadcrumb className="hidden md:flex">
             <BreadcrumbList>
@@ -47,9 +48,9 @@ export function Dashboard() {
             </BreadcrumbList>
           </Breadcrumb>
         </nav>
-      </header>
+      </Page.Header>
 
-      <section className="grid flex-1 items-start gap-4 p-4 sm:px-6 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 sm:gap-4 sm:py-4 sm:pl-14">
+      <Page.Content className="grid items-start gap-4 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 sm:gap-4">
         <div className="grid auto-rows-max items-start gap-4 sm:px-6 md:gap-8 lg:col-span-2">
           <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
             <Card>
@@ -251,7 +252,7 @@ export function Dashboard() {
             </CardContent>
           </Card>
         </aside>
-      </section>
-    </main>
+      </Page.Content>
+    </Page.Root >
   );
 }
