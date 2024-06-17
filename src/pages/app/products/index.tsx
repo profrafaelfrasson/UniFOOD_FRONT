@@ -32,6 +32,7 @@ import {
 import { Link } from "react-router-dom"
 import { ColumnDef } from "@tanstack/react-table"
 import { Table } from "@/pages/components/table"
+import { Page } from "@/pages/components/page"
 
 interface Product {
   id: string
@@ -262,11 +263,10 @@ export const columns: ColumnDef<Product>[] = [
 
 export function Products() {
   return (
-    <main className="flex min-h-screen w-full flex-col bg-muted/40">
-
-      <section className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-        <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-          <header className="flex justify-between items-center gap-2">
+    <>
+      <Page.Root>
+        <Page.Header>
+          <nav className="px-6">
             <Breadcrumb className="hidden md:flex">
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -286,17 +286,25 @@ export function Products() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+          </nav>
+        </Page.Header>
 
-            <Button size="sm" className="h-8 gap-1">
-              <PlusCircle className="h-4 w-4" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Adicionar Produto</span>
-            </Button>
-          </header>
-
+        <Page.Content>
           <Card>
             <CardHeader>
-              <CardTitle>Produtos</CardTitle>
-              <CardDescription>Gerencie seus produtos e visualize seu desempenho de vendas.</CardDescription>
+              <CardTitle className="flex justify-between">
+                Produtos
+                <Button size="sm" className="h-8 gap-1">
+                  <PlusCircle className="h-4 w-4" />
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Adicionar Produto</span>
+                </Button>
+
+              </CardTitle>
+              <CardDescription >
+                Gerencie seus produtos e visualize seu desempenho de vendas
+              </CardDescription>
+
+
             </CardHeader>
             <CardContent>
               <Table.Root>
@@ -315,9 +323,10 @@ export function Products() {
               </div>
             </CardFooter>
           </Card>
-        </div>
-      </section>
+        </Page.Content>
+      </Page.Root >
+    </>
 
-    </main>
+
   )
 }
