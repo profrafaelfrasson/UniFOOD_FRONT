@@ -12,7 +12,9 @@ export function Header({ className, ...rest }: Props) {
           'flex-col',
           'sm:gap-4',
           'sm:pb-4',
-          'sm:pl-14'],
+          'sm:pl-14',
+          'px-6',
+        ],
         className
       )}
       {...rest}

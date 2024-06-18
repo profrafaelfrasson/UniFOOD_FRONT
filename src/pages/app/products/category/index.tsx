@@ -261,7 +261,7 @@ export const columns: ColumnDef<Product>[] = [
   },
 ]
 
-export function Products() {
+export function Category() {
   return (
     <>
       <Page.Root>
@@ -277,8 +277,12 @@ export function Products() {
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbLink>
-                    <BreadcrumbPage>Todos Produtos</BreadcrumbPage>
+                    <Link to="/produtos">Produtos</Link>
                   </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Categorias</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -289,11 +293,11 @@ export function Products() {
           <Card>
             <CardHeader>
               <CardTitle className="flex justify-between">
-                Produtos
+                Categorias
                 <Link to="/produtos/adicionar-produto">
                   <Button size="sm" className="h-8 gap-1">
                     <PlusCircle className="h-4 w-4" />
-                    <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Adicionar Produto</span>
+                    <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Adicionar Categoria</span>
                   </Button>
                 </Link>
               </CardTitle>

@@ -4,22 +4,22 @@ export const MENU = [
   {
     icon: Home,
     href: '/',
-    name: 'Dashboard',
+    name: 'Painel',
   },
   {
     icon: ShoppingCart,
     href: '/pedidos',
-    name: 'Orders',
+    name: 'Pedidos',
   },
   {
     icon: Package,
     href: '/produtos',
-    name: 'Products',
+    name: 'Produtos',
   },
   {
     icon: Users2,
-    href: '/customers',
-    name: 'Customers',
+    href: '/fornecedores',
+    name: 'Fornecedores',
   },
   {
     icon: LineChart,
