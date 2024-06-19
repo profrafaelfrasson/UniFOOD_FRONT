@@ -7,7 +7,6 @@ import { Orders } from './pages/app/orders'
 import { Register } from './pages/app/register'
 import { Login } from './pages/auth/sign.in'
 import { Dashboard } from './pages/app/dashboard'
-import { Category } from './pages/app/products/category'
 import { Supplier } from './pages/app/supplier'
 import { Products } from './pages/app/products'
 import { AddProduct } from './pages/app/products/add-product'
@@ -22,8 +21,6 @@ export const router = createBrowserRouter([
       { path: '/produtos', element: <Products /> },
 
       { path: '/produtos/adicionar-produto', element: <AddProduct /> },
-
-      { path: '/produtos/categorias', element: <Category /> },
 
       { path: '/fornecedores', element: <Supplier /> },
 
