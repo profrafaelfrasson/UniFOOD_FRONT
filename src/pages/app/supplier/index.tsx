@@ -31,6 +31,7 @@ import { Link } from "react-router-dom"
 import { ColumnDef } from "@tanstack/react-table"
 import { Table } from "@/pages/components/table"
 import { Page } from "@/pages/components/page"
+import { Helmet } from "react-helmet-async"
 
 interface Product {
   id: string
@@ -261,6 +262,8 @@ export const columns: ColumnDef<Product>[] = [
 export function Supplier() {
   return (
     <>
+      <Helmet title="Fornecedores" />
+
       <Page.Root>
         <Page.Header>
           <nav className="px-6">

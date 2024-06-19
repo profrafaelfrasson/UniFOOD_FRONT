@@ -4,7 +4,6 @@ import { AppLayout } from './pages/_layouts/app'
 import { AuthLayout } from './pages/_layouts/auth'
 import { NotFound } from './pages/404'
 import { Orders } from './pages/app/orders'
-import { Register } from './pages/app/register'
 import { Login } from './pages/auth/sign.in'
 import { Dashboard } from './pages/app/dashboard'
 import { Supplier } from './pages/app/supplier'
@@ -27,7 +26,6 @@ export const router = createBrowserRouter([
 
       { path: '/pedidos', element: <Orders /> },
 
-      { path: '/cadastros', element: <Register /> },
     ],
   },
   {

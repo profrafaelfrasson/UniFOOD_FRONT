@@ -1,18 +1,14 @@
 import './global.css'
 
-import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { RouterProvider } from 'react-router-dom'
 
-import { ThemeProvider } from './components/theme/theme-provider'
 import { router } from './route'
+import { Providers } from './providers'
 
 export function App() {
   return (
-    <HelmetProvider>
-      <ThemeProvider storageKey="pizzashop-theme" defaultTheme="dark">
-        <Helmet titleTemplate="%s | unifood" />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </HelmetProvider>
+    <Providers>
+      <RouterProvider router={router} />
+    </Providers>
   )
 }

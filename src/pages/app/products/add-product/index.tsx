@@ -48,11 +48,14 @@ import { Page } from "@/pages/components/page"
 import { Dialog, DialogContent, DialogTitle, DialogHeader, DialogFooter } from "@/components/ui/dialog"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Helmet } from "react-helmet-async"
 
 
 export function AddProduct() {
   return (
     <>
+      <Helmet title="Adicionar Produto" />
+
       <Page.Root>
         <Page.Header>
           <nav className="px-6">
