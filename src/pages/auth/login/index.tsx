@@ -15,8 +15,10 @@ import { Input } from "@/components/ui/input"
 import { Helmet } from "react-helmet-async"
 
 const loginSchema = z.object({
-  email: z.string({ required_error: 'Este campo deve ser preenchido' })
-    .email({ message: "Este não é um e-mail válido." })
+  email: z
+    .string({ required_error: 'Este campo deve ser preenchido' })
+    .email({ message: "Este não é um e-mail válido." }),
+  password: z.string({ required_error: 'Este campo deve ser preenchido' }).min(6, { message: "A senha deve possuir 6 digitos" }),
 })
 
 
@@ -53,10 +55,28 @@ export function Login() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="shadcn"
+                        placeholder="Digite seu e-mail"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Senha</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Insira a senha"
+                        type="password"
                         {...field}
                       />
                     </FormControl>
