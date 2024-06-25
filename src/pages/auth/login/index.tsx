@@ -13,25 +13,31 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Helmet } from "react-helmet-async"
+import { useSession } from "@/contexts/session/hook/use-session"
 
 const loginSchema = z.object({
   email: z
     .string({ required_error: 'Este campo deve ser preenchido' })
     .email({ message: "Este não é um e-mail válido." }),
-  password: z.string({ required_error: 'Este campo deve ser preenchido' }).min(6, { message: "A senha deve possuir 6 digitos" }),
+  password: z
+    .string({ required_error: 'Este campo deve ser preenchido' })
+    .min(6, { message: "A senha deve possuir 6 digitos" }),
 })
-
 
 type ILoginFormData = z.infer<typeof loginSchema>
 
-
 export function Login() {
+
+  const { signIn } = useSession()
+
   const form = useForm<ILoginFormData>({
     resolver: zodResolver(loginSchema),
   })
 
-  function onSubmit(data: ILoginFormData) {
-    console.log(data)
+  function onSubmit({ email, password }: ILoginFormData) {
+    signIn.mutate(
+      { email, password },
+    );
   }
 
   return (
