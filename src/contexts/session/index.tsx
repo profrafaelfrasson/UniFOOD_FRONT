@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createContext, useEffect, useState } from 'react';
 import * as Types from './types';
 import { api } from '@/lib/axios';
-import { jwtDecode } from "jwt-decode";
 import { SESSION_STORAGE_KEY } from '@/constants';
 
 
@@ -26,15 +25,14 @@ export function SessionProvider({ children }: Types.ISessionProvider) {
   const signIn = useMutation({
     mutationKey: ['sign-in'],
     mutationFn: async (params: { email: string; password: string }) => {
-      const { data } = await api.post('/login', params);
+      const { data } = await api.post('/auth/login ', params);
 
       const { token } = data;
 
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-      const user = jwtDecode<Types.IUser>(token);
+      const session: Types.ISession = { token };
 
-      const session: Types.ISession = { token, user };
       saveSession(session);
       return session;
     },

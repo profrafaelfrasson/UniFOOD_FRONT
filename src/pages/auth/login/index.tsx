@@ -30,18 +30,16 @@ export function Login() {
 
   const { signIn } = useSession()
 
-
-
   const form = useForm<ILoginFormData>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    }
   })
 
-
   function onSubmit({ email, password }: ILoginFormData) {
-    signIn.mutate(
-
-      { email, password },
-    );
+    signIn.mutate({ email, password });
   }
 
   return (

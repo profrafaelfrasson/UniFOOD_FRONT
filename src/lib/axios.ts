@@ -1,8 +1,9 @@
 import axios from 'axios';
 import * as Types from './types';
+import { env } from '@/env';
 
 export const api = axios.create({
-  baseURL: 'http://167.249.227.198:8080/',
+  baseURL: env.VITE_API_URL,
 }) as Types.ICustomAxiosInstance;
 
 api.customInterceptor = signOut => {
