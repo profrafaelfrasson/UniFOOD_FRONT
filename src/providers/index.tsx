@@ -4,6 +4,7 @@ import { ReactQueryProvider } from './react-query';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { SessionProvider } from '@/contexts/session';
+import { Toaster } from '@/components/ui/toaster';
 
 export function Providers({ children }: PropsWithChildren) {
   return (
@@ -13,6 +14,7 @@ export function Providers({ children }: PropsWithChildren) {
           <Helmet titleTemplate="%s | unifood" />
           <SessionProvider>
             {children}
+            <Toaster />
           </SessionProvider>
         </ThemeProvider>
       </ReactQueryProvider>

@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Helmet } from "react-helmet-async"
 import { useSession } from "@/contexts/session/hook/use-session"
+import { useToast } from "@/components/ui/use-toast"
+import { LoaderCircle } from "lucide-react"
 
 const loginSchema = z.object({
   email: z
@@ -21,14 +23,18 @@ const loginSchema = z.object({
     .email({ message: "Este não é um e-mail válido." }),
   password: z
     .string({ required_error: 'Este campo deve ser preenchido' })
-    .min(6, { message: "A senha deve possuir 6 digitos" }),
+    .min(1, { message: "Este campo deve ser preenchido" }),
 })
 
 type ILoginFormData = z.infer<typeof loginSchema>
 
 export function Login() {
 
+  const { toast } = useToast()
+
   const { signIn } = useSession()
+
+  const { mutate, isPending } = signIn
 
   const form = useForm<ILoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -38,9 +44,26 @@ export function Login() {
     }
   })
 
+  const { isValid } = form.formState
+
+
+
   function onSubmit({ email, password }: ILoginFormData) {
-    signIn.mutate({ email, password });
+    mutate(
+      { email, password },
+      {
+        onError: () => {
+
+          toast({
+            variant: "destructive",
+            title: "Ops! Algo Deu Errado",
+            description: "Não conseguimos fazer login. Por favor, verifique suas credenciais e tente novamente",
+          })
+        },
+      },
+    );
   }
+
 
   return (
     <>
@@ -92,7 +115,11 @@ export function Login() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">Submit</Button>
+              <Button type="submit" className="w-full flex gap-2" disabled={!isValid || isPending}>
+                {!isPending && 'Salvar'}
+
+                {isPending && <LoaderCircle size={18} className="animate-spin" />}
+              </Button>
             </form>
           </Form >
         </div>

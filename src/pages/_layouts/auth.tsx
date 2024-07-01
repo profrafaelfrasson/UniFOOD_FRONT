@@ -1,7 +1,22 @@
+import { useSession } from '@/contexts/session/hook/use-session'
 import { ChefHat } from 'lucide-react'
-import { Outlet } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 export function AuthLayout() {
+
+  const { session } = useSession()
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (session) {
+      navigate('/', { replace: true })
+    }
+  }, [session])
+
+  if (session) return
+
   return (
     <div className="grid min-h-screen grid-cols-2">
       <div className="flex h-full flex-col justify-between border-r border-foreground/5 bg-muted p-10 text-muted-foreground">
@@ -19,4 +34,5 @@ export function AuthLayout() {
       </div>
     </div>
   )
+
 }
