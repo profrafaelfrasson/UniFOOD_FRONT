@@ -8,6 +8,25 @@ import { MoreHorizontal, PlusCircle } from "lucide-react"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { z } from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { useMutation } from "@tanstack/react-query"
+import { api } from "@/lib/axios"
+import { AxiosError } from "axios"
+import { toast, useToast } from "@/components/ui/use-toast"
+
+const categorySchema = z.object({
+  name: z
+    .string({ required_error: 'Este campo deve ser preenchido' })
+    .min(1, { message: "Este campo deve ser preenchido" }),
+  description: z
+    .string({ required_error: 'Este campo deve ser preenchido' })
+    .min(1, { message: "Este campo deve ser preenchido" }),
+})
+
+type ICategoryFormData = z.infer<typeof categorySchema>
 
 export function Category() {
 
@@ -16,6 +35,50 @@ export function Category() {
     actions: formModalAddActions,
     target: toTargetAddCategory,
   } = useModal<ICategory>()
+
+
+  const form = useForm<ICategoryFormData>({
+    resolver: zodResolver(categorySchema),
+    defaultValues: {
+      description: '',
+      name: '',
+    }
+  })
+
+  async function createCategoryRequest(params: ICategoryFormData) {
+
+    const response = await api.post('/categories/register ', params)
+
+    return response
+  }
+
+  const { mutate: craateCategoryMutation } = useMutation({
+    mutationFn: createCategoryRequest,
+    onError: () => {
+      toast({
+        variant: "destructive",
+        title: "Algo deu errado, tente novamente.",
+
+      })
+    },
+    onSuccess: (data) => {
+      console.log(data)
+    }
+  })
+
+  function onSubmit({ description, name }: ICategoryFormData) {
+
+    const normalizedData = {
+      name,
+      description,
+      id: crypto.randomUUID(),
+      created_at: new Date(),
+      updated_at: null,
+      products: null,
+    }
+
+    craateCategoryMutation(normalizedData)
+  }
 
   return (
     <>
@@ -107,26 +170,47 @@ export function Category() {
           <DialogHeader>
             <DialogTitle>Adicionar Categoria</DialogTitle>
           </DialogHeader>
-          <div className="space-y-3">
-            <Label htmlFor="name">Nome</Label>
-            <Input
-              id="name"
-              type="text"
-              className="w-full"
-              placeholder="Digite o nome da categoria"
-            />
-          </div>
-          <div className="space-y-3">
-            <Label htmlFor="description">Descrição</Label>
-            <Input
-              id="description"
-              type="text"
-              className="w-full"
-              placeholder="Digite a descrição da categoria"
-            />
-          </div>
+
+          <Form {...form} >
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" id="form-category">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nome</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Digite o nome da categoria"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Descrição</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Digite a descrição da categoria"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </form>
+          </Form >
+
           <DialogFooter>
-            <Button type="submit">Confirmar</Button>
+            <Button type="submit" form="form-category">Confirmar</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

@@ -46,14 +46,11 @@ export function Login() {
 
   const { isValid } = form.formState
 
-
-
   function onSubmit({ email, password }: ILoginFormData) {
     mutate(
       { email, password },
       {
         onError: () => {
-
           toast({
             variant: "destructive",
             title: "Ops! Algo Deu Errado",
@@ -63,7 +60,6 @@ export function Login() {
       },
     );
   }
-
 
   return (
     <>
