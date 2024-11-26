@@ -9,6 +9,7 @@ import { Supplier } from './pages/app/supplier'
 import { Products } from './pages/app/products'
 import { AddProduct } from './pages/app/products/add-product'
 import { Login } from './pages/auth/login'
+import { Register } from './pages/auth/register'
 
 export const router = createBrowserRouter([
   {
@@ -18,19 +19,17 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', element: <Dashboard /> },
       { path: '/produtos', element: <Products /> },
-
       { path: '/produtos/adicionar-produto', element: <AddProduct /> },
-
       { path: '/fornecedores', element: <Supplier /> },
-
-
       { path: '/pedidos', element: <Orders /> },
-
     ],
   },
   {
     path: '/',
     element: <AuthLayout />,
-    children: [{ path: '/login', element: <Login /> }],
+    children: [
+      { path: '/login', element: <Login /> },
+      { path: '/register', element: <Register /> }
+    ],
   },
 ])
