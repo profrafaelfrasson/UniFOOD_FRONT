@@ -7,17 +7,17 @@ import { useSession } from '@/contexts/session/hook/use-session'
 
 export function AppLayout() {
 
-  const { session } = useSession()
+  // const { session } = useSession()
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  useEffect(() => {
-    if (!session) {
-      navigate('/login', { replace: true })
-    }
-  }, [session])
+  // useEffect(() => {
+  //   if (!session) {
+  //     navigate('/login', { replace: true })
+  //   }
+  // }, [session])
 
-  if (!session) return
+  // if (!session) return
 
   return (
     <div className="flex min-h-screen flex-col antialiased ">

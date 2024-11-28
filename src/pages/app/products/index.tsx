@@ -33,6 +33,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Table } from "@/pages/components/table"
 import { Page } from "@/pages/components/page"
 import { Helmet } from "react-helmet-async"
+import { useGetProducts } from "./hooks/use-get-products"
 
 interface Product {
   id: string
@@ -261,6 +262,9 @@ export const columns: ColumnDef<Product>[] = [
 ]
 
 export function Products() {
+
+  const { data } = useGetProducts()
+
   return (
     <>
       <Helmet title="Produtos" />
