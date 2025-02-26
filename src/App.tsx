@@ -2,8 +2,8 @@ import './global.css'
 
 import { RouterProvider } from 'react-router-dom'
 
-import { router } from './route'
 import { Providers } from './providers'
+import { router } from './route'
 
 export function App() {
   return (

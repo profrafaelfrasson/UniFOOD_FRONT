@@ -1,18 +1,25 @@
-import { Table, TableBody, TableHeader, TableRow } from "@/components/ui/table"
-import { TableOptions, flexRender, getCoreRowModel, getExpandedRowModel, useReactTable } from "@tanstack/react-table";
-import { useContext, createContext, Fragment } from "react";
+import {
+  flexRender,
+  getCoreRowModel,
+  getExpandedRowModel,
+  TableOptions,
+  useReactTable,
+} from '@tanstack/react-table'
+import { createContext, Fragment, useContext } from 'react'
+
+import { Table, TableBody, TableHeader, TableRow } from '@/components/ui/table'
 
 interface Props<T> extends Omit<TableOptions<T>, 'getCoreRowModel'> {
-  emptyMessageComponent?: () => React.JSX.Element;
+  emptyMessageComponent?: () => React.JSX.Element
 }
 
 interface IContextProps {
-  columnsLength: number;
+  columnsLength: number
 }
 
-const ctx = createContext({} as IContextProps);
+const ctx = createContext({} as IContextProps)
 
-export const useCtx = () => useContext(ctx);
+export const useCtx = () => useContext(ctx)
 
 export function Content<T>({
   data,
@@ -20,7 +27,6 @@ export function Content<T>({
   emptyMessageComponent,
   ...props
 }: Props<T>) {
-
   const table = useReactTable({
     ...props,
     data,
@@ -34,9 +40,9 @@ export function Content<T>({
     },
   })
 
-  const rowsLength = data.length;
-  const hasRows = rowsLength > 0;
-  const columnsLength = columns.length;
+  const rowsLength = data.length
+  const hasRows = rowsLength > 0
+  const columnsLength = columns.length
 
   return (
     <Table>
@@ -49,9 +55,9 @@ export function Content<T>({
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
                 </Fragment>
               )
             })}
@@ -59,24 +65,21 @@ export function Content<T>({
         ))}
       </TableHeader>
       <TableBody>
-        {table.getRowModel().rows?.length ? (
-          table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              className="group"
-              data-state={row.getIsSelected() && 'selected'}
-            >
-              {row.getVisibleCells().map((cell) => (
-                <Fragment key={cell.id} >
-                  {flexRender(
-                    cell.column.columnDef.cell,
-                    cell.getContext(),
-                  )}
-                </Fragment>
-              ))}
-            </TableRow>
-          ))
-        ) : []}
+        {table.getRowModel().rows?.length
+          ? table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.id}
+                className="group"
+                data-state={row.getIsSelected() && 'selected'}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <Fragment key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </Fragment>
+                ))}
+              </TableRow>
+            ))
+          : []}
         {!hasRows && emptyMessageComponent && (
           <ctx.Provider value={{ columnsLength }}>
             <tr>{emptyMessageComponent()}</tr>

@@ -1,14 +1,14 @@
 {
   "extends": [
-    "@rocketseat/eslint-config/react", 
-    "next/core-web-vitals",
-    "next/typescript"
+    "@rocketseat/eslint-config/react"
   ],
-  "plugins": ["simple-import-sort"],
+  "plugins": [
+    "simple-import-sort"
+  ],
   "rules": {
     "simple-import-sort/imports": "error",
     "react-hooks/rules-of-hooks": "off",
-    "camelcase" : "off",
+    "camelcase": "off",
     "no-restricted-syntax": "off",
     "no-case-declarations": "off"
   }

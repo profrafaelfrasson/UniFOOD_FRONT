@@ -1,7 +1,7 @@
-import type { ComponentProps } from 'react';
-import { twMerge } from 'tailwind-merge';
+import type { ComponentProps } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-interface Props extends ComponentProps<'main'> { }
+interface Props extends ComponentProps<'main'> {}
 
 export function Root({ className, ...rest }: Props) {
   return (
@@ -14,9 +14,9 @@ export function Root({ className, ...rest }: Props) {
           'flex-col',
           'bg-muted/40',
         ],
-        className
+        className,
       )}
       {...rest}
     />
-  );
+  )
 }

@@ -1,10 +1,11 @@
+import { type PropsWithChildren } from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 
-import { type PropsWithChildren } from 'react';
-import { ReactQueryProvider } from './react-query';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { ThemeProvider } from '@/components/theme/theme-provider';
-import { SessionProvider } from '@/contexts/session';
-import { Toaster } from '@/components/ui/toaster';
+import { ThemeProvider } from '@/components/theme/theme-provider'
+import { Toaster } from '@/components/ui/toaster'
+import { SessionProvider } from '@/contexts/session'
+
+import { ReactQueryProvider } from './react-query'
 
 export function Providers({ children }: PropsWithChildren) {
   return (
@@ -19,5 +20,5 @@ export function Providers({ children }: PropsWithChildren) {
         </ThemeProvider>
       </ReactQueryProvider>
     </HelmetProvider>
-  );
+  )
 }

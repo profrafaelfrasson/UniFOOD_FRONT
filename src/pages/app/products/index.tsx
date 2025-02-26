@@ -1,7 +1,7 @@
-import {
-  MoreHorizontal,
-  PlusCircle,
-} from "lucide-react"
+import { ColumnDef } from '@tanstack/react-table'
+import { MoreHorizontal, PlusCircle } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 
 import {
   Breadcrumb,
@@ -10,8 +10,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
+} from '@/components/ui/breadcrumb'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -19,21 +19,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from '@/components/ui/dropdown-menu'
+import { Page } from '@/pages/components/page'
+import { Table } from '@/pages/components/table'
 
-
-import { Link } from "react-router-dom"
-import { ColumnDef } from "@tanstack/react-table"
-import { Table } from "@/pages/components/table"
-import { Page } from "@/pages/components/page"
-import { Helmet } from "react-helmet-async"
-import { useGetProducts } from "./hooks/use-get-products"
+import { useGetProducts } from './hooks/use-get-products'
 
 interface Product {
   id: string
@@ -45,97 +41,91 @@ interface Product {
   editedAt: string
 }
 
-const data: Product[] = [
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
+// const data: Product[] = [
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
 
-  {
-    id: crypto.randomUUID(),
-    image: '/pastel.jpeg',
-    name: 'Pastel de ovo',
-    price: '$499.99',
-    amount: '25',
-    createdAt: '2023-07-12 10:42 AM',
-    editedAt: '2023-07-12 10:42 AM'
-  },
-]
+//   {
+//     id: crypto.randomUUID(),
+//     image: '/pastel.jpeg',
+//     name: 'Pastel de ovo',
+//     price: '$499.99',
+//     amount: '25',
+//     createdAt: '2023-07-12 10:42 AM',
+//     editedAt: '2023-07-12 10:42 AM',
+//   },
+// ]
 
 export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: 'image',
     header: ({ header }) => {
-      return (
-        <Table.Head
-          header={header}
-        />
-      );
+      return <Table.Head header={header} />
     },
     cell: ({ cell, row: { original } }) => {
       return (
-        <Table.Cell
-          cell={cell}
-        >
+        <Table.Cell cell={cell}>
           <img
             alt="Product image"
             className="aspect-square rounded-md object-cover"
@@ -144,26 +134,16 @@ export const columns: ColumnDef<Product>[] = [
             width="64"
           />
         </Table.Cell>
-      );
+      )
     },
   },
   {
     accessorKey: 'name',
     header: ({ header }) => {
-      return (
-        <Table.Head header={header}  >
-          Nome
-        </Table.Head>
-      );
+      return <Table.Head header={header}>Nome</Table.Head>
     },
     cell: ({ cell, row }) => {
-      return (
-        <Table.Cell
-          cell={cell}
-        >
-          {row.getValue('name')}
-        </Table.Cell>
-      );
+      return <Table.Cell cell={cell}>{row.getValue('name')}</Table.Cell>
     },
   },
   {
@@ -173,37 +153,31 @@ export const columns: ColumnDef<Product>[] = [
         <Table.Head header={header} className="hidden md:table-cell">
           Preço
         </Table.Head>
-      );
+      )
     },
     cell: ({ cell, row }) => {
       return (
-        <Table.Cell
-          cell={cell}
-          className="hidden md:table-cell"
-        >
+        <Table.Cell cell={cell} className="hidden md:table-cell">
           {row.getValue('price')}
         </Table.Cell>
-      );
+      )
     },
   },
   {
     accessorKey: 'amount',
     header: ({ header }) => {
       return (
-        <Table.Head header={header} className="hidden md:table-cell" >
+        <Table.Head header={header} className="hidden md:table-cell">
           Unidades
         </Table.Head>
-      );
+      )
     },
     cell: ({ cell, row }) => {
       return (
-        <Table.Cell
-          cell={cell}
-          className="hidden md:table-cell"
-        >
+        <Table.Cell cell={cell} className="hidden md:table-cell">
           {row.getValue('amount')}
         </Table.Cell>
-      );
+      )
     },
   },
   {
@@ -213,37 +187,28 @@ export const columns: ColumnDef<Product>[] = [
         <Table.Head header={header} className="hidden md:table-cell">
           Criado há
         </Table.Head>
-      );
+      )
     },
     cell: ({ cell, row }) => {
       return (
-        <Table.Cell
-          cell={cell}
-          className="hidden md:table-cell"
-        >
+        <Table.Cell cell={cell} className="hidden md:table-cell">
           {row.getValue('createdAt')}
         </Table.Cell>
-      );
+      )
     },
   },
   {
     accessorKey: 'actions',
-    header: ({ header, }) => {
-      return (
-        <Table.Head header={header} className="hidden md:table-cell" />
-      );
+    header: ({ header }) => {
+      return <Table.Head header={header} className="hidden md:table-cell" />
     },
     cell: ({ cell }) => {
       return (
         <Table.Cell cell={cell}>
           <Table.Actions>
-            <DropdownMenu >
-              <DropdownMenuTrigger asChild >
-                <Button
-                  aria-haspopup="true"
-                  size="icon"
-                  variant="ghost"
-                >
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button aria-haspopup="true" size="icon" variant="ghost">
                   <MoreHorizontal className="h-4 w-4" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
@@ -255,14 +220,12 @@ export const columns: ColumnDef<Product>[] = [
             </DropdownMenu>
           </Table.Actions>
         </Table.Cell>
-
-      );
+      )
     },
   },
 ]
 
 export function Products() {
-
   const { data } = useGetProducts()
 
   return (
@@ -297,11 +260,13 @@ export function Products() {
                 <Link to="/produtos/adicionar-produto">
                   <Button size="sm" className="h-8 gap-1">
                     <PlusCircle className="h-4 w-4" />
-                    <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Adicionar Produto</span>
+                    <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                      Adicionar Produto
+                    </span>
                   </Button>
                 </Link>
               </CardTitle>
-              <CardDescription >
+              <CardDescription>
                 Gerencie seus produtos e visualize seu desempenho de vendas
               </CardDescription>
             </CardHeader>
@@ -311,7 +276,9 @@ export function Products() {
                   data={data ?? []}
                   columns={columns}
                   emptyMessageComponent={() => (
-                    <Table.EmptyMessage>Adicione um novo produto</Table.EmptyMessage>
+                    <Table.EmptyMessage>
+                      Adicione um novo produto
+                    </Table.EmptyMessage>
                   )}
                 />
               </Table.Root>
@@ -323,9 +290,7 @@ export function Products() {
             </CardFooter>
           </Card>
         </Page.Content>
-      </Page.Root >
+      </Page.Root>
     </>
-
-
   )
 }

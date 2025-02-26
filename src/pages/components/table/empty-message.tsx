@@ -1,11 +1,12 @@
-import type { ComponentProps } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { useCtx } from './content';
+import type { ComponentProps } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-interface Props extends ComponentProps<'td'> { }
+import { useCtx } from './content'
+
+interface Props extends ComponentProps<'td'> {}
 
 export function EmptyMessage({ className, ...rest }: Props) {
-  const { columnsLength } = useCtx();
+  const { columnsLength } = useCtx()
 
   return (
     <td
@@ -22,9 +23,9 @@ export function EmptyMessage({ className, ...rest }: Props) {
           'px-[1rem]',
           'h-[3.125rem]',
         ],
-        className
+        className,
       )}
       {...rest}
     />
-  );
+  )
 }

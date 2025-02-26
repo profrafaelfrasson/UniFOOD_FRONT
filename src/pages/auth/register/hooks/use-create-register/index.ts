@@ -1,5 +1,6 @@
-import { api } from '@/lib/axios'
 import { useMutation } from '@tanstack/react-query'
+
+import { api } from '@/lib/axios'
 
 interface Register {
   name: string
@@ -20,7 +21,6 @@ async function create({ user }: CreateRegister) {
 }
 
 export function useCreateRegister() {
-
   return useMutation({
     mutationFn: create,
     mutationKey: ['create-register'],

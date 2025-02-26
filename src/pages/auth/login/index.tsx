@@ -1,8 +1,10 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { LoaderCircle } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -10,26 +12,23 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Helmet } from "react-helmet-async"
-import { useSession } from "@/contexts/session/hook/use-session"
-import { useToast } from "@/components/ui/use-toast"
-import { LoaderCircle } from "lucide-react"
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { useToast } from '@/components/ui/use-toast'
+import { useSession } from '@/contexts/session/hook/use-session'
 
 const loginSchema = z.object({
   email: z
     .string({ required_error: 'Este campo deve ser preenchido' })
-    .email({ message: "Este não é um e-mail válido." }),
+    .email({ message: 'Este não é um e-mail válido.' }),
   password: z
     .string({ required_error: 'Este campo deve ser preenchido' })
-    .min(1, { message: "Este campo deve ser preenchido" }),
+    .min(1, { message: 'Este campo deve ser preenchido' }),
 })
 
 type ILoginFormData = z.infer<typeof loginSchema>
 
 export function Login() {
-
   const { toast } = useToast()
 
   const { signIn } = useSession()
@@ -41,7 +40,7 @@ export function Login() {
     defaultValues: {
       email: '',
       password: '',
-    }
+    },
   })
 
   const { isValid } = form.formState
@@ -52,13 +51,14 @@ export function Login() {
       {
         onError: () => {
           toast({
-            variant: "destructive",
-            title: "Ops! Algo Deu Errado",
-            description: "Não conseguimos fazer login. Por favor, verifique suas credenciais e tente novamente",
+            variant: 'destructive',
+            title: 'Ops! Algo Deu Errado',
+            description:
+              'Não conseguimos fazer login. Por favor, verifique suas credenciais e tente novamente',
           })
         },
       },
-    );
+    )
   }
 
   return (
@@ -75,7 +75,7 @@ export function Login() {
             </p>
           </div>
 
-          <Form  {...form}>
+          <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
@@ -84,10 +84,7 @@ export function Login() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="Digite seu e-mail"
-                        {...field}
-                      />
+                      <Input placeholder="Digite seu e-mail" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -111,13 +108,19 @@ export function Login() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full flex gap-2" disabled={!isValid || isPending}>
+              <Button
+                type="submit"
+                className="flex w-full gap-2"
+                disabled={!isValid || isPending}
+              >
                 {!isPending && 'Salvar'}
 
-                {isPending && <LoaderCircle size={18} className="animate-spin" />}
+                {isPending && (
+                  <LoaderCircle size={18} className="animate-spin" />
+                )}
               </Button>
             </form>
-          </Form >
+          </Form>
         </div>
       </div>
     </>

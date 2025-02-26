@@ -1,8 +1,14 @@
-
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { MENU } from '@/pages/shared/menu'
 import { Package2, Settings } from 'lucide-react'
 import { Link } from 'react-router-dom'
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+import { MENU } from '@/pages/shared/menu'
+
 import { NavLink } from './nav-link'
 
 export function Aside() {
@@ -23,7 +29,7 @@ export function Aside() {
           return (
             <TooltipProvider key={href}>
               <Tooltip>
-                <TooltipTrigger key={name} >
+                <TooltipTrigger key={name}>
                   <NavLink to={href}>
                     <Icon className="h-5 w-5 transition-all group-hover:scale-110" />
                     <span className="sr-only">{name}</span>
@@ -51,7 +57,6 @@ export function Aside() {
           </Tooltip>
         </TooltipProvider>
       </nav>
-    </aside >
-
+    </aside>
   )
 }

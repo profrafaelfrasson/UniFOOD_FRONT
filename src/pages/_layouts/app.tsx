@@ -1,12 +1,11 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+// import { useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
+
+// import { useSession } from '@/contexts/session/hook/use-session'
 import { Aside } from '../components/aside'
 import { Header } from '../components/header'
-import { useEffect } from 'react'
-import { useSession } from '@/contexts/session/hook/use-session'
-
 
 export function AppLayout() {
-
   // const { session } = useSession()
 
   // const navigate = useNavigate()
@@ -20,12 +19,11 @@ export function AppLayout() {
   // if (!session) return
 
   return (
-    <div className="flex min-h-screen flex-col antialiased ">
+    <div className="flex min-h-screen flex-col antialiased">
       <Aside />
       <Header />
 
       <Outlet />
     </div>
   )
-
 }

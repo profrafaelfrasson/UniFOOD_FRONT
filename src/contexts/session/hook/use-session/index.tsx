@@ -1,6 +1,7 @@
-import { useContext } from 'react';
-import { SessionContext } from '../..';
+import { useContext } from 'react'
+
+import { SessionContext } from '../..'
 
 export function useSession() {
-  return useContext(SessionContext);
+  return useContext(SessionContext)
 }

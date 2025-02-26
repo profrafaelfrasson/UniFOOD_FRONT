@@ -1,7 +1,15 @@
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Building, LogOut } from "lucide-react";
+import { Building, LogOut } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 export function AccountMenu() {
   return (
@@ -18,9 +26,8 @@ export function AccountMenu() {
 
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel className="flex flex-col">
-
             <span>Name</span>
-            <span className="text-sm  font-normal text-muted-foreground">
+            <span className="text-sm font-normal text-muted-foreground">
               email@gmail.com
             </span>
           </DropdownMenuLabel>

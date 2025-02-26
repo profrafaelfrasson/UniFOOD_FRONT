@@ -1,10 +1,10 @@
-import { useSession } from '@/contexts/session/hook/use-session'
 import { ChefHat } from 'lucide-react'
 import { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
-export function AuthLayout() {
+import { useSession } from '@/contexts/session/hook/use-session'
 
+export function AuthLayout() {
   const { session } = useSession()
 
   const navigate = useNavigate()
@@ -13,6 +13,7 @@ export function AuthLayout() {
     if (session) {
       navigate('/', { replace: true })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session])
 
   if (session) return
@@ -34,5 +35,4 @@ export function AuthLayout() {
       </div>
     </div>
   )
-
 }

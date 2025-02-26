@@ -1,8 +1,6 @@
-
-import {
-  ChevronLeft,
-  Upload,
-} from "lucide-react"
+import { ChevronLeft } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 
 import {
   Breadcrumb,
@@ -11,18 +9,11 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-
+} from '@/components/ui/breadcrumb'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Table,
   TableBody,
@@ -30,20 +21,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Textarea } from "@/components/ui/textarea"
+} from '@/components/ui/table'
+import { Textarea } from '@/components/ui/textarea'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { Page } from '@/pages/components/page'
 
-import { Link } from "react-router-dom"
-import { Page } from "@/pages/components/page"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { Helmet } from "react-helmet-async"
-import { useModal } from "@/pages/hooks/useModal"
-import { ICategory } from "../types"
-import { Category } from "../components/category"
-
+import { Category } from '../components/category'
 
 export function AddProduct() {
-
   return (
     <>
       <Helmet title="Adicionar Produto" />
@@ -111,7 +96,6 @@ export function AddProduct() {
                             type="text"
                             className="w-full"
                             placeholder="Digite o nome do produto"
-
                           />
                         </div>
                         <div className="grid gap-3">
@@ -172,7 +156,9 @@ export function AddProduct() {
                                 variant="outline"
                               >
                                 <ToggleGroupItem value="kg">KG</ToggleGroupItem>
-                                <ToggleGroupItem value="qnt">QTD</ToggleGroupItem>
+                                <ToggleGroupItem value="qnt">
+                                  QTD
+                                </ToggleGroupItem>
                               </ToggleGroup>
                             </TableCell>
                           </TableRow>
@@ -180,50 +166,8 @@ export function AddProduct() {
                       </Table>
                     </CardContent>
                   </Card>
-
                 </div>
                 <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-                  <Card className="overflow-hidden" x-chunk="dashboard-07-chunk-4">
-                    <CardHeader>
-                      <CardTitle>Imagem do Produto</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid gap-2">
-                        <img
-                          alt="Product image"
-                          className="aspect-square w-full rounded-md object-cover"
-                          height="300"
-                          src="/pastel.jpeg"
-                          width="300"
-                        />
-                        <div className="grid grid-cols-3 gap-2">
-                          <button>
-                            <img
-                              alt="Product image"
-                              className="aspect-square w-full rounded-md object-cover"
-                              height="84"
-                              src="/pastel.jpeg"
-                              width="84"
-                            />
-                          </button>
-                          <button>
-                            <img
-                              alt="Product image"
-                              className="aspect-square w-full rounded-md object-cover"
-                              height="84"
-                              src="/pastel.jpeg"
-                              width="84"
-                            />
-                          </button>
-                          <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                            <Upload className="h-4 w-4 text-muted-foreground" />
-                            <span className="sr-only">Upload</span>
-                          </button>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
                   <Category />
                 </div>
               </div>
@@ -234,7 +178,7 @@ export function AddProduct() {
                 <Button size="sm">Salvar Produto</Button>
               </div>
             </div>
-          </main >
+          </main>
         </Page.Content>
       </Page.Root>
     </>

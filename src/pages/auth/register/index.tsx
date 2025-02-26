@@ -1,8 +1,10 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { LoaderCircle } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -10,21 +12,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Helmet } from "react-helmet-async"
-import { useToast } from "@/components/ui/use-toast"
-import { LoaderCircle } from "lucide-react"
-import { useCreateRegister } from "./hooks/use-create-register"
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { useToast } from '@/components/ui/use-toast'
+
+import { useCreateRegister } from './hooks/use-create-register'
 
 const registerSchema = z.object({
   email: z
     .string({ required_error: 'Este campo deve ser preenchido' })
-    .email({ message: "Este não é um e-mail válido." }),
+    .email({ message: 'Este não é um e-mail válido.' }),
   password: z
     .string({ required_error: 'Este campo deve ser preenchido' })
-    .min(1, { message: "Este campo deve ser preenchido" }),
-  name: z.string({ required_error: 'Este campo deve ser preenchido' })
+    .min(1, { message: 'Este campo deve ser preenchido' }),
+  name: z.string({ required_error: 'Este campo deve ser preenchido' }),
 })
 
 type IRegisterFormData = z.infer<typeof registerSchema>
@@ -39,14 +40,13 @@ export function Register() {
     defaultValues: {
       email: '',
       password: '',
-      name: ''
-    }
+      name: '',
+    },
   })
 
   const { isValid } = form.formState
 
   function onSubmit(user: IRegisterFormData) {
-
     console.log(user)
 
     mutateAsync(
@@ -54,13 +54,14 @@ export function Register() {
       {
         onError: () => {
           toast({
-            variant: "destructive",
-            title: "Ops! Algo Deu Errado",
-            description: "Não conseguimos fazer registro. Por favor, verifique suas credenciais e tente novamente",
+            variant: 'destructive',
+            title: 'Ops! Algo Deu Errado',
+            description:
+              'Não conseguimos fazer registro. Por favor, verifique suas credenciais e tente novamente',
           })
         },
       },
-    );
+    )
   }
 
   return (
@@ -77,7 +78,7 @@ export function Register() {
             </p>
           </div>
 
-          <Form  {...form}>
+          <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
@@ -86,10 +87,7 @@ export function Register() {
                   <FormItem>
                     <FormLabel>Nome</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="Digite seu nome"
-                        {...field}
-                      />
+                      <Input placeholder="Digite seu nome" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -103,10 +101,7 @@ export function Register() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder="Digite seu e-mail"
-                        {...field}
-                      />
+                      <Input placeholder="Digite seu e-mail" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -130,13 +125,19 @@ export function Register() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full flex gap-2" disabled={!isValid || isPending}>
+              <Button
+                type="submit"
+                className="flex w-full gap-2"
+                disabled={!isValid || isPending}
+              >
                 {!isPending && 'Salvar'}
 
-                {isPending && <LoaderCircle size={18} className="animate-spin" />}
+                {isPending && (
+                  <LoaderCircle size={18} className="animate-spin" />
+                )}
               </Button>
             </form>
-          </Form >
+          </Form>
         </div>
       </div>
     </>

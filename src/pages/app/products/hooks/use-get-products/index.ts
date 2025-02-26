@@ -1,5 +1,6 @@
-import { api } from '@/lib/axios'
 import { useQuery } from '@tanstack/react-query'
+
+import { api } from '@/lib/axios'
 
 async function get() {
   const { data } = await api.get('/orders/1')
@@ -12,7 +13,7 @@ export function useGetProducts() {
 
   const query = useQuery({
     queryKey,
-    queryFn: get
+    queryFn: get,
   })
 
   return { ...query, queryKey }

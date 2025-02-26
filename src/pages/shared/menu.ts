@@ -1,4 +1,4 @@
-import { Home, LineChart, Package, ShoppingCart, Users2 } from 'lucide-react';
+import { Home, Package, ShoppingCart } from 'lucide-react'
 
 export const MENU = [
   {
@@ -16,14 +16,4 @@ export const MENU = [
     href: '/produtos',
     name: 'Produtos',
   },
-  {
-    icon: Users2,
-    href: '/fornecedores',
-    name: 'Fornecedores',
-  },
-  {
-    icon: LineChart,
-    href: '/analytics',
-    name: 'Analytics',
-  },
-];
+]
