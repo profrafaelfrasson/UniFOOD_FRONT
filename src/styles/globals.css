@@ -4,6 +4,57 @@
 
 
 @layer base {
+    body {
+    scroll-behavior: smooth;
+  }
+
+  html {
+    font-size: 75%;
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply rounded-[0.5rem] bg-gray-300;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-[0.5rem] bg-gray-400;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+
+
+  @media screen and (min-width: 580px) {
+    html {
+      font-size: 81.25%;
+    }
+  }
+
+  @media screen and (min-width: 640px) {
+    html {
+      font-size: 87.5%;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    html {
+      font-size: 93.75%;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    html {
+      font-size: 100%;
+    }
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -59,3 +110,16 @@
       @apply bg-background text-foreground;
     }
   }
+
+
+  
+
+
+  @layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}
