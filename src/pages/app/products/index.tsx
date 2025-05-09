@@ -29,8 +29,6 @@ import {
 import { Page } from '@/pages/components/page'
 import { Table } from '@/pages/components/table'
 
-import { useGetProducts } from './hooks/use-get-products'
-
 interface Product {
   id: string
   image: string
