@@ -49,7 +49,7 @@ export function AddProduct() {
                     <Link to="/produtos">Produtos</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator />
+                <BreadcrumbSeparator />z
                 <BreadcrumbItem>
                   <BreadcrumbLink>
                     <BreadcrumbPage>Adicionar Produto</BreadcrumbPage>
@@ -85,7 +85,7 @@ export function AddProduct() {
                 <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
                   <Card x-chunk="dashboard-07-chunk-0">
                     <CardHeader>
-                      <CardTitle>Detalhes do Protudo</CardTitle>
+                      <CardTitle>Detalhes do Produdo</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="grid gap-6">

@@ -26,7 +26,7 @@ export function AddOrder() {
 
   return (
     <>
-      <Helmet title="Pedidos" />
+      <Helmet title="Criar Pedido" />
       <Page.Root>
         <Page.Header>
           <nav className="px-6">

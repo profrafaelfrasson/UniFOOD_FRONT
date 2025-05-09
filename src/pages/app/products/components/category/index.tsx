@@ -115,14 +115,14 @@ export function Category() {
         <CardContent>
           <div className="grid gap-3">
             <Label htmlFor="category">Categoria</Label>
-            <Select>
+            <Select defaultOpen>
               <SelectTrigger id="category" aria-label="Selecione">
                 <SelectValue placeholder="Selecione a categoria" />
               </SelectTrigger>
               <SelectContent>
                 <div className="flex w-full gap-2">
                   <SelectItem value="clothing" className="w-[85%]">
-                    TESTE2222
+                    Pastel
                   </SelectItem>
                   <DropdownMenu>
                     <DropdownMenuTrigger className="flex items-center justify-center rounded-sm p-2 hover:bg-accent">
@@ -136,7 +136,7 @@ export function Category() {
                 </div>
                 <div className="flex w-full gap-2">
                   <SelectItem value="electronics" className="w-[85%]">
-                    Electronics
+                    Bebida
                   </SelectItem>
                   <DropdownMenu>
                     <DropdownMenuTrigger className="flex items-center justify-center rounded-sm p-2 hover:bg-accent">
@@ -150,7 +150,7 @@ export function Category() {
                 </div>
                 <div className="flex w-full gap-2">
                   <SelectItem value="accessories" className="w-[85%]">
-                    Accessories
+                    Coxinha
                   </SelectItem>
                   <DropdownMenu>
                     <DropdownMenuTrigger className="flex items-center justify-center rounded-sm p-2 hover:bg-accent">

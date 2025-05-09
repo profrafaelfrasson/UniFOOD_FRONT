@@ -41,81 +41,81 @@ interface Product {
   editedAt: string
 }
 
-// const data: Product[] = [
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
+const data: Product[] = [
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
 
-//   {
-//     id: crypto.randomUUID(),
-//     image: '/pastel.jpeg',
-//     name: 'Pastel de ovo',
-//     price: '$499.99',
-//     amount: '25',
-//     createdAt: '2023-07-12 10:42 AM',
-//     editedAt: '2023-07-12 10:42 AM',
-//   },
-// ]
+  {
+    id: crypto.randomUUID(),
+    image: '/pastel.jpeg',
+    name: 'Pastel de ovo',
+    price: '$499.99',
+    amount: '25',
+    createdAt: '2023-07-12 10:42 AM',
+    editedAt: '2023-07-12 10:42 AM',
+  },
+]
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -226,7 +226,7 @@ export const columns: ColumnDef<Product>[] = [
 ]
 
 export function Products() {
-  const { data } = useGetProducts()
+  // const { data } = useGetProducts()
 
   return (
     <>
