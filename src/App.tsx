@@ -1,5 +1,14 @@
-import './global.css'
+import '@/styles/globals.css'
+
+import { RouterProvider } from 'react-router-dom'
+
+import { Providers } from './providers'
+import { router } from './route'
 
 export function App() {
-  return <h1>Hello world!</h1>
+  return (
+    <Providers>
+      <RouterProvider router={router} />
+    </Providers>
+  )
 }
